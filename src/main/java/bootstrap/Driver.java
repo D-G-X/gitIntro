@@ -12,13 +12,17 @@ import java.util.Properties;
 
 
 public class Driver {
-
-    public static void main(String[] args) {
-        System.out.println("Hello Hogwarts");
-    }
-
     static Properties applicationConfig = new Properties();
     static Logger logger = LoggerFactory.getLogger(Driver.class);
+
+    public static void main(String[] args) {
+
+        initializeProperties(args);
+        configureLogging(extractProperty("log.file.path"),
+                Boolean.parseBoolean(extractProperty("debug.log")));
+        logger.info("Hello Hogwarts");
+
+    }
 
     public static String configureLogging(String logDirectory, boolean debug) {
         DailyRollingFileAppender dailyRollingFileAppender = new DailyRollingFileAppender();
