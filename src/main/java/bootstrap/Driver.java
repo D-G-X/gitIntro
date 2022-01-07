@@ -1,6 +1,7 @@
 package bootstrap;
 
 
+import domain.Student;
 import org.apache.log4j.DailyRollingFileAppender;
 import org.apache.log4j.EnhancedPatternLayout;
 import org.apache.log4j.Level;
@@ -21,6 +22,11 @@ public class Driver {
         configureLogging(extractProperty("log.file.path"),
                 Boolean.parseBoolean(extractProperty("debug.log")));
         logger.info("Hello Hogwarts");
+
+        Student student = new Student();
+        student.setStudentName("Darren");
+        student.setStudentRollNum("1019125");
+        student.setBranch("Computers");
 
     }
 
